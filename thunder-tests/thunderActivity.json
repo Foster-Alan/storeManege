@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "72cdeb9b-9e3f-4959-a42d-832079d13dd6",
+    "colId": "history",
+    "containerId": "",
+    "name": "SELECT * FROM StoreManager.sales",
+    "url": "SELECT * FROM StoreManager.sales",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-01-13T22:45:54.996Z",
+    "modified": "2023-01-13T22:45:54.996Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f3678c76-9ec2-4f8c-983a-0e2d755bf365",
+    "colId": "history",
+    "containerId": "",
+    "name": "",
+    "url": "",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-01-13T22:45:59.325Z",
+    "modified": "2023-01-13T22:45:59.325Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
