@@ -57,6 +57,39 @@ describe('Test - productsServices', () => {
 
       await postProduct(req);
 		})
+    it('', async () => {
+      const req = {
+        body: { name: '' },
+      };
+
+      sinon
+        .stub(productsModel, 'post')
+        .resolves(1);
+
+      await postProduct(req);
+		})
+    it('', async () => {
+      const req = {
+        body: { xxxxx: 'Product X' },
+      };
+
+      sinon
+        .stub(productsModel, 'post')
+        .resolves(1);
+
+      await postProduct(req);
+		})
+    it('', async () => {
+      const req = {
+        body: { name: 'P' },
+      };
+
+      sinon
+        .stub(productsModel, 'post')
+        .resolves(1);
+
+      await postProduct(req);
+		})
 
     
   })
