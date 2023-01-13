@@ -8,7 +8,7 @@ chai.use(sinonChai);
 const { mockGetAllProducts, mockGetOneProduct } = require("../mocks/mockProducts");
 
 const { productsService } = require("../../../src/services");
-const { getAllProducts, getOneProduct } = require("../../../src/controllers/productsController");
+const { getAllProducts, getOneProduct, postProduct } = require("../../../src/controllers/productsController");
 
 describe('Test productsController', () => {
 	describe('Get all', () => {
@@ -16,7 +16,7 @@ describe('Test productsController', () => {
       const res = {};
       const req = {};
 
-      res.status = sinon.stub().returns(res);c
+      res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
       sinon
         .stub(productsService, 'getAllProducts')
@@ -46,5 +46,23 @@ describe('Test productsController', () => {
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith(mockGetOneProduct);
 		})
-	})
+  })
+  
+  	describe('Post one product', () => {
+		it('', async () => {
+      const res = {};
+      const req = {
+        name: 'Product X'
+      };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(productsService, 'postProduct')
+        .resolves({ status: 201, response: { ...req.body, id: 1 } });
+
+      await postProduct(req, res);
+		})
+    })
+  
 })
