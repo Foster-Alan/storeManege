@@ -1,3 +1,5 @@
+
+
 const chai = require("chai");
 const sinon = require("sinon");
 const sinonChai = require('sinon-chai');
@@ -7,62 +9,82 @@ chai.use(sinonChai);
 
 const {
   mockArrProductsForSale, mockArrSales, mockArrProductIdNotExist, mockArrQuantityNotExist,
-  mockArrQuantitySmallerZero, mockArrProductsNotExist
+  mockArrQuantitySmallerZero, mockArrProductsNotExist, mockArrAllSales, mockArrOneSale
 } = require("../mocks/mockSales");
-
-const { saleModel } = require("../../../src/models");
-const { postMultipleSales } = require("../../../src/services/saleService");
 const { postSalesValidate } = require("../../../src/services/validations/validate");
 
-describe('Test - saleServices', () => {
-  describe('validation', () => {
+const { saleModel } = require("../../../src/models");
+const { getAllSales, getOneSale } = require("../../../src/services/saleService");
+
+describe('Unit Test - salesServices', () => {
+	describe('validation', () => {
     it('', async () => {
       sinon
         .stub(saleModel, 'getAllProductsSale')
         .resolves(mockArrProductsForSale);
 
-      await postSalesValidate(mockArrSales);
-    })
+      await postSalesValidate(mockArrSales, mockArrSales.length);
+		})
     it('', async () => {
       sinon
         .stub(saleModel, 'getAllProductsSale')
         .resolves(mockArrProductsForSale);
 
-      await postSalesValidate(mockArrProductIdNotExist);
-    })
+      await postSalesValidate(mockArrProductIdNotExist, mockArrProductIdNotExist.length);
+		})
     it('', async () => {
       sinon
         .stub(saleModel, 'getAllProductsSale')
         .resolves(mockArrProductsForSale);
 
-      await postSalesValidate(mockArrQuantityNotExist);
-    })
+      await postSalesValidate(mockArrQuantityNotExist, mockArrQuantityNotExist.length);
+		})
     it('', async () => {
       sinon
         .stub(saleModel, 'getAllProductsSale')
         .resolves(mockArrProductsForSale);
 
-      await postSalesValidate(mockArrQuantitySmallerZero);
-    })
+      await postSalesValidate(mockArrQuantitySmallerZero, mockArrQuantitySmallerZero.length);
+		})
     it('', async () => {
       sinon
         .stub(saleModel, 'getAllProductsSale')
         .resolves(mockArrProductsNotExist);
 
-      await postSalesValidate(mockArrSales);
+      await postSalesValidate(mockArrSales, mockArrSales.length);
     })
   })
 
-  describe('Post sales', () => {
+  describe('Get all sales', () => {
     it('', async () => {
       sinon
-        .stub(saleModel, 'postSales')
-        .resolves({ insertId: 10 });
-      await postMultipleSales(mockArrSales);
+        .stub(saleModel, 'getAll')
+        .resolves(mockArrAllSales);
+
+      await getAllSales();
     })
   })
+  describe('Get sale by id', () => {
+    it('', async () => {
+      req = {
+        params: { id: 1 }
+      }
+      sinon
+        .stub(saleModel, 'getById')
+        .resolves(mockArrOneSale);
 
-      
+      await getOneSale(req);
+    })
+    it('', async () => {
+      req = {
+        params: { id: 99999 }
+      }
+      sinon
+        .stub(saleModel, 'getById')
+        .resolves([]);
 
+      await getOneSale(req);
+    })
+  })
   afterEach(sinon.restore);
 })
