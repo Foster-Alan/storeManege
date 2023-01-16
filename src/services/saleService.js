@@ -24,8 +24,17 @@ const postMultipleSales = async (req) => {
   return { status: 201, response: { id, itemsSold: [...arrSales] } };
 };
 
+const deleteOneSale = async (req) => {
+  const { id } = req.params;
+  const existSale = await saleModel.getSaleById(id);
+  if (!existSale) return { status: 404, response: { message: 'Sale not found' } };
+  await saleModel.deleteById(id);
+  return { status: 204 };
+};
+
 module.exports = {
   postMultipleSales,
    getAllSales,
   getOneSale,
+  deleteOneSale,
 };

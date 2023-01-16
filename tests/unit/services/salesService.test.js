@@ -14,7 +14,7 @@ const {
 const { postSalesValidate } = require("../../../src/services/validations/validate");
 
 const { saleModel } = require("../../../src/models");
-const { getAllSales, getOneSale, postMultipleSales } = require("../../../src/services/saleService");
+const { getAllSales, getOneSale, postMultipleSales, deleteOneSale } = require("../../../src/services/saleService");
 
 describe('Unit Test - salesServices', () => {
 	describe('validation', () => {
@@ -94,6 +94,14 @@ describe('Unit Test - salesServices', () => {
   //   })
   //   it('', async () => {
   //     await postMultipleSales({ body: mockArrProductIdNotExist })
+  //   })
+  // })
+  //  describe('DELETE', () => {
+  //   it('', async () => {
+  //     await deleteOneSale({params: { id: 1 }});
+  //   })
+  //   it('', async () => {
+  //     await deleteOneSale({params: { id: 99999 }});
   //   })
   // })
 })

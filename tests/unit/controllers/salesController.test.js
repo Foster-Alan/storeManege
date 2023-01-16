@@ -5,10 +5,10 @@ const sinonChai = require('sinon-chai');
 const { expect } = chai;
 chai.use(sinonChai);
 
-const { mockArrSales, mockArrAllSales } = require("../mocks/mockSales");
+const { mockArrSales, mockArrAllSales, mockArrOneSale } = require("../mocks/mockSales");
 
 const { saleService } = require("../../../src/services");
-const { postMultipleSales, getAllSales, getOneSale, mockArrOneSale } = require("../../../src/controllers/saleControler");
+const { postMultipleSales, getAllSales, getOneSale, deleteOneSale } = require("../../../src/controllers/saleControler");
 
 describe('Test - salesController', () => {
 	describe('Post sales', () => {
@@ -51,6 +51,21 @@ describe('Test - salesController', () => {
         .resolves({ status: 200, response: mockArrOneSale });
 
       await getOneSale(req, res);
+		})
+  })
+  
+  	describe('DELETE', () => {
+		it('', async () => {
+      const res = {};
+      const req = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(saleService, 'deleteOneSale')
+        .resolves({ status: 204 });
+
+      await deleteOneSale(req, res);
 		})
 	})
 })
