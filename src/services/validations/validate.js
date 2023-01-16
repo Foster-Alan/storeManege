@@ -51,7 +51,8 @@ const postSalesValidate = (arrSales, lengthArrSales) => {
   if (checkFieldExist(arrSales, lengthArrSales)) return checkFieldExist(arrSales, lengthArrSales);
   if (checkFieldValid(arrSales)) return checkFieldValid(arrSales);
   if (checkProductExist(arrSales)) return checkProductExist(arrSales);
-};
+  return undefined;
+};  
 
 module.exports = {
   postProductValidate,

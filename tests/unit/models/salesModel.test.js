@@ -8,7 +8,7 @@ chai.use(sinonChai);
 const { mockArrSales, mockArrAllSales } = require("../mocks/mockSales");
 
 const connection = require("../../../src/models/connection");
-const { postSales, getAll } = require("../../../src/models/saleModel");
+const { postSales, getAll, getById } = require("../../../src/models/saleModel");
 
 describe('Unit Test - salesModels', () => {
   describe('Post sales', () => {
@@ -29,5 +29,11 @@ describe('Unit Test - salesModels', () => {
       await getAll();
     })
   })
+  //   describe('Get sale by id', () => {
+  //   it('', async () => {
+  //     await getById(1);
+  //   })
+  // })
+  
   afterEach(sinon.restore);
 })

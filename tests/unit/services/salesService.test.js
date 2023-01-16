@@ -14,7 +14,7 @@ const {
 const { postSalesValidate } = require("../../../src/services/validations/validate");
 
 const { saleModel } = require("../../../src/models");
-const { getAllSales, getOneSale } = require("../../../src/services/saleService");
+const { getAllSales, getOneSale, postMultipleSales } = require("../../../src/services/saleService");
 
 describe('Unit Test - salesServices', () => {
 	describe('validation', () => {
@@ -87,4 +87,13 @@ describe('Unit Test - salesServices', () => {
     })
   })
   afterEach(sinon.restore);
+  
+  //  describe('Post  sales', () => {
+  //   it('', async () => {
+  //     await postMultipleSales({ body: mockArrSales })
+  //   })
+  //   it('', async () => {
+  //     await postMultipleSales({ body: mockArrProductIdNotExist })
+  //   })
+  // })
 })
