@@ -88,29 +88,4 @@ describe('Unit Test - salesServices', () => {
   })
   
   afterEach(sinon.restore);
-
-  // describe('PUT Sale', () => {
-  // it('', async () => {
-  //   const arr = [ { "productId": 1, "quantity": 10 }, { "productId": 2, "quantity": 50 } ]
-  //   await putOneSale({ params: { id: 1 }, body: { arr } });
-  // })
-  // })
-  
-  
-  //  describe('Post  sales', () => {
-  //   it('', async () => {
-  //     await postMultipleSales({ body: mockArrSales })
-  //   })
-  //   it('', async () => {
-  //     await postMultipleSales({ body: mockArrProductIdNotExist })
-  //   })
-  // })
-  //  describe('DELETE', () => {
-  //   it('', async () => {
-  //     await deleteOneSale({params: { id: 1 }});
-  //   })
-  //   it('', async () => {
-  //     await deleteOneSale({params: { id: 99999 }});
-  //   })
-  // })
 })

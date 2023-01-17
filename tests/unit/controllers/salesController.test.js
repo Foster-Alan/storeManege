@@ -8,7 +8,7 @@ chai.use(sinonChai);
 const { mockArrSales, mockArrAllSales, mockArrOneSale } = require("../mocks/mockSales");
 
 const { saleService } = require("../../../src/services");
-const { postMultipleSales, getAllSales, getOneSale, deleteOneSale } = require("../../../src/controllers/saleControler");
+const { postMultipleSales, getAllSales, getOneSale, deleteOneSale, putOneSale } = require("../../../src/controllers/saleControler");
 
 describe('Test - salesController', () => {
 	describe('Post sales', () => {
@@ -66,6 +66,10 @@ describe('Test - salesController', () => {
         .resolves({ status: 204 });
 
       await deleteOneSale(req, res);
-		})
-	})
+    })
+      
+      
+      
+    })
+  
 })

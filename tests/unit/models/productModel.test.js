@@ -41,16 +41,39 @@ describe('Test - productsModels', () => {
 		})
   })
 
-  // 	describe('PUT One product', () => {
-	// 	it('', async () => {
-  //     await put('XXXXXXX', 1);
-	// 	})
-	// })
-	// describe('DELETE One product', () => {
-	// 	it('', async () => {
-  //     await deleteById(1);
-	// 	})
-	// })
+  describe('put', () => {
+    it('', async () => {
+      sinon
+        .stub(connection, 'execute')
+        .resolves([{}]);
+
+      await put('Product X', 1);
+		})
+    it('', async () => {
+      sinon
+        .stub(connection, 'execute')
+        .resolves([undefined]);
+
+      await put('Product X', 1);
+		})
+  })
+  
+  describe('deleteById', () => {
+    it('', async () => {
+      sinon
+        .stub(connection, 'execute')
+        .resolves([{}]);
+
+      await deleteById(1);
+		})
+    it('', async () => {
+      sinon
+        .stub(connection, 'execute')
+        .resolves([undefined]);
+
+      await deleteById(1);
+		})
+	})
   
   afterEach(sinon.restore);
 })

@@ -6,8 +6,9 @@ const { expect } = chai;
 chai.use(sinonChai);
 
 const { mockGetAllProducts, mockGetOneProduct } = require("../mocks/mockProducts");
+const { mockArrProductsForSale } = require("../mocks/mockSales");
 
-const { productsModel } = require("../../../src/models");
+const { productsModel, salesModel } = require("../../../src/models");
 const { getAllProducts, getOneProduct, postProduct, putProduct, deleteProduct } = require("../../../src/services/productService");
 
 describe('Test - productsServices', () => {
@@ -90,25 +91,51 @@ describe('Test - productsServices', () => {
 
       await postProduct(req);
     })
-    //     describe('PUT  One product', () => {
-    //   it('', async () => {
-    //     await putProduct({ body: { name: 'XXXXXXXXX' }, params: { id: 1 } });
-    //   })
-    //   it('', async () => {
-    //     await putProduct({ body: { name: 'X' }, params: { id: 1 } });
-    //   })
-    //   it('', async () => {
-    //     await putProduct({ body: { name: 'XXXXXXXXX' }, params: { id: 999999999999 } });
-    //   })
-    // })
+   
+  })
 
-    //    })
-    // describe('DELETE One product', () => {
-    //   it('', async () => {
-    //     await deleteProduct({  params: { id: 1 } });
-    //   })
+  describe('put', () => {
+    it('', async () => {
+      sinon
+        .stub(productsModel, 'getById')
+        .resolves({ id: 1, name: 'Current name' });
+      sinon
+        .stub(productsModel, 'put')
+        .resolves({ affectedRows: 1 });
+      await putProduct({ body: { name: "New name" }, params: { id: 1 } })
+    })
+    it('', async () => {
+      sinon
+        .stub(productsModel, 'getById')
+        .resolves(undefined);
+      sinon
+        .stub(productsModel, 'put')
+        .resolves({ affectedRows: 1 });
 
-    
+      await putProduct({ body: { name: "New name" }, params: { id: 1 } })
+    })
+  })
+  describe('deleteProduct', () => {
+    it('', async () => {
+      sinon
+        .stub(productsModel, 'getById')
+        .resolves({ id: 1, name: 'Current name' });
+      sinon
+        .stub(productsModel, 'deleteById')
+        .resolves({ affectedRows: 1 });
+
+      await deleteProduct({ params: { id: 1 } })
+    })
+    it('', async () => {
+      sinon
+        .stub(productsModel, 'getById')
+        .resolves(undefined);
+      sinon
+        .stub(productsModel, 'deleteById')
+        .resolves({ affectedRows: 1 });
+
+      await deleteProduct({ params: { id: 1 } })
+    })
   })
   
   afterEach(sinon.restore);

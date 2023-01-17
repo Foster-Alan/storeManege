@@ -28,9 +28,11 @@ const putProduct = async (req) => {
   const resultValidation = postProductValidate(name);
   if (resultValidation) return resultValidation;
   const productExist = await productsModel.getById(id);
-  if (!productExist) return { status: 404, response: { message: 'Product not found' } };
-  await productsModel.put(name, id);
-  return { status: 200, response: { name, id } };
+    if (productExist === undefined) {
+    return { status: 404, response: { message: 'Product not found' } };
+  }
+  const result = await productsModel.put(name, id);
+  return result && { status: 200, response: { name, id } };
 };
 
 const deleteProduct = async (req) => {
@@ -41,10 +43,17 @@ const deleteProduct = async (req) => {
   return { status: 204 };
 };
 
+const getAllSearchProduct = async (query) => {
+  if (query === '') return getAllProducts();
+  const products = await productsModel.getAllByQuery(query);
+  return { status: 200, response: products };
+};
+
 module.exports = {
   getAllProducts,
   getOneProduct,
   postProduct,
   putProduct,
   deleteProduct,
+  getAllSearchProduct,
 };
